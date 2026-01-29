@@ -1,18 +1,17 @@
 # AZURE NETWORKING: VIRTUAL NETWORK (VNET) AND SUBNET CONFIGURATION DOCUMENTATION
 This document explains how to create a Virtual Network and configure subnets in Microsoft Azure, including best practices for IP planning and network segmentation.
+<p align="center"> <img width="735" height="385" alt="vpc-Page-3 drawio" src="https://github.com/user-attachments/assets/41e36de0-78a8-402f-b549-935425d9cd43" />
 
-<p align="center"> <img width="600" height="500" alt="image" src="https://github.com/user-attachments/assets/f634b80f-e38a-4cef-9490-95e5cbeab616" />
 
-This diagramatic representation is only for test purposes especially with the IP addressing.
 ## Table of contents
 1. [Introduction](#introduction)
 2. [Pre-requisites and Services used](#pre-requisites-and-services-used)
-3. Planning the IP Adress Space
-4. Creating a Virtual Network
-5. Validation and Verification
-6. Creating Subnets
-7. Creating and Associating Network Security Groups to Subnets
-8. Common Errors and Troubleshooting
+3. [Planning the IP Address Space](#planning-the-ip-address-space)
+4. [Creating a Virtual Network](#creating-a-virtual-network)
+5. [Validation and Verification](#validation-and-verification)
+6. [Creating Subnets](#creating-subnets)
+7. [Creating and Associating Network Security Groups to Subnets](#creating-and-associating-network-security-groups-to-subnets)
+8. [Errors and Troubleshooting](#errors-and-troubleshooting)
 9. Conclusion
 
 ## Introduction
@@ -30,7 +29,7 @@ This document outlines the steps to create a Virtual Network and configure subne
 * Network Security Groups
 
 
-## Planning the IP Adress Space
+## Planning the IP Address Space
 It is necessary to plan your IP addressing before creating your virtual network. This ensures efficient use of addresses, prevents overlapping networks, and allows for future scalability. When designing a VNet, a private IPv4 address range should be selected and divided into non-overlapping subnets based on workload requirements. Each subnet should be sized to accommodate current needs while leaving room for growth. Careful planning at this stage helps avoid network conflicts and simplifies expansion, peering, and hybrid connectivity going forward. 
 
 The recommended private IP address ranges are:
@@ -52,3 +51,21 @@ The recommended private IP address ranges are:
 Azure performs validation to check the VNet configuration for errors (like overlapping IPs) and verification to confirm the VNet is created and working correctly.
 
 ## Creating Subnets
+* After deployment is complete, open the newly created Virtual Network to access its configuration dashboard.
+* From the Virtual Network menu, expand Settings and select Subnets.
+* Click the + Subnet button, enter the required subnet name, and Azure will allocate the subnet IP address range accordingly.
+* Then Save. Repeat the same process for the required number of subnets needed
+
+Azure reserves five IP addresses in each subnet for platform use, including the network address, default gateway, DNS mapping, and two internal reserved addresses, which must be considered when planning subnet size. To confirm the setup, check that subnets do not overlap, verify the CIDR ranges, and ensure resources are deployed in the correct subnet.
+
+## Creating and Associating Network Security Groups to Subnets
+Network Security Groups (NSGs) provide network-level security by filtering traffic to and from Azure resources. Security rules define which traffic is allowed or denied.
+* Head to the Azure portal dashboard and search for Network Security Groups using the search bar.
+* Click Create on the Network Security Groups page to proceed.
+* Provide the required details such as the subscription, NSG name, selected resource group, and region
+* Then review and save. You can replicate this process based on the number of subnets required for the project.
+
+## Errors and Troubleshooting
+* ERROR- I attempted to create a virtual network using 200.100.50.0/24 which resulted in an error due to overlapping or insufficient address space.
+* TROUBLESHOOTING- I used a larger, non-overlapping private IP address range (such as 192.168.0.0/16) thus ensuring the address space does not conflict with existing networks.
+
