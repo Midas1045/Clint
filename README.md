@@ -60,23 +60,24 @@ Azure performs validation to check the VNet configuration for errors (like overl
 
 Azure reserves five IP addresses in each subnet for platform use, including the network address, default gateway, DNS mapping, and two internal reserved addresses, which must be considered when planning subnet size. To confirm the setup, check that subnets do not overlap, verify the CIDR ranges, and ensure resources are deployed in the correct subnet.
 
-<p align="center"> <img width="1006" height="313" alt="Screenshot 2026-02-01 211914" src="https://github.com/user-attachments/assets/2a6f5e5a-b8e3-4662-a4ec-2ee61d8d8baa" />
+<p align="center"> <img width="735" height="385" alt="Screenshot 2026-02-01 211914" src="https://github.com/user-attachments/assets/2a6f5e5a-b8e3-4662-a4ec-2ee61d8d8baa" />
 
 
 ## Creating and Associating Network Security Groups to Subnets
-Network Security Groups (NSGs) provide network-level security by filtering traffic to and from Azure resources. Security rules define which traffic is allowed or denied.
+In Azure, Network Security Group (NSG) provide both subnet-level and VM-level traffic control, combining the roles of AWS Network Access Control Lists (NACL) and Security Group. They provide network-level security by filtering traffic to and from Azure resources. Security rules define which traffic is allowed or denied.
 * Head to the Azure portal dashboard and search for Network Security Groups using the search bar.
 * Click Create on the Network Security Groups page to proceed.
 * Provide the required details such as the subscription, NSG name, selected resource group, and region
 * Then review and save. You can replicate this process based on the number of subnets required for the project.
-<p align="center"> <img width="1190" height="476" alt="Screenshot 2026-02-01 211127" src="https://github.com/user-attachments/assets/1a0e4425-e79b-418e-b53e-c2fbb6397672" />
+<p align="center"> <img width="735" height="385" alt="Screenshot 2026-02-01 211127" src="https://github.com/user-attachments/assets/1a0e4425-e79b-418e-b53e-c2fbb6397672" />
 
 
 ## Errors and Troubleshooting
 * ERROR- I attempted to create a virtual network using 200.100.50.0/24 which resulted in an error due to overlapping or insufficient address space.
-<p align="center"> <img width="807" height="289" alt="Screenshot 2026-01-28 015715" src="https://github.com/user-attachments/assets/46216265-bf25-4f72-86de-cf62576bad82" />
+<p align="center"> <img width="735" height="385" alt="Screenshot 2026-01-28 015715" src="https://github.com/user-attachments/assets/46216265-bf25-4f72-86de-cf62576bad82" />
   
 * TROUBLESHOOTING- I used a larger, non-overlapping private IP address range (such as 192.168.0.0/16) thus ensuring the address space does not conflict with existing networks.
-<p align="center"> <img width="1000" height="248" alt="Screenshot 2026-02-01 210731" src="https://github.com/user-attachments/assets/7f509a0f-b287-40e9-b3ec-09cee0dd7d0a" />
+<p align="center"> <img width="735" height="385" alt="Screenshot 2026-02-01 210731" src="https://github.com/user-attachments/assets/7f509a0f-b287-40e9-b3ec-09cee0dd7d0a" />
 
 ## Conclusion
+This project demonstrates the creation of an Azure Virtual Network (VNet) using a defined private IP address space with CIDR notation, segmented into three subnets. Each subnet is associated with its own Network Security Group (NSG) to control inbound and outbound traffic. This setup shows proper IP addressing, network segmentation, and basic security practices in Azure.
