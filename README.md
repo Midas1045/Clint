@@ -12,7 +12,7 @@ This document explains how to create a Virtual Network and configure subnets in 
 6. [Creating Subnets](#creating-subnets)
 7. [Creating and Associating Network Security Groups to Subnets](#creating-and-associating-network-security-groups-to-subnets)
 8. [Errors and Troubleshooting](#errors-and-troubleshooting)
-9. Conclusion
+9. [Conclusion](#Conclusion)
 
 ## Introduction
 A Virtual Network in Microsoft Azure is a private network that enables secure communication between Azure resources, the internet as well as onsite networks. 
@@ -49,6 +49,9 @@ The recommended private IP address ranges are:
 
 ## Validation and Verification
 Azure performs validation to check the VNet configuration for errors (like overlapping IPs) and verification to confirm the VNet is created and working correctly.
+<p align="center"> <img width="735" height="385" alt="Screenshot 2026-01-28 020931" src="https://github.com/user-attachments/assets/cad3b463-b1f1-4d7a-bd90-3a9be8472afc" />
+
+
 
 ## Creating Subnets
 * After deployment is complete, open the newly created Virtual Network to access its configuration dashboard.
@@ -68,4 +71,8 @@ Network Security Groups (NSGs) provide network-level security by filtering traff
 ## Errors and Troubleshooting
 * ERROR- I attempted to create a virtual network using 200.100.50.0/24 which resulted in an error due to overlapping or insufficient address space.
 * TROUBLESHOOTING- I used a larger, non-overlapping private IP address range (such as 192.168.0.0/16) thus ensuring the address space does not conflict with existing networks.
+<p align="center"> <img width="807" height="289" alt="Screenshot 2026-01-28 015715" src="https://github.com/user-attachments/assets/46216265-bf25-4f72-86de-cf62576bad82" />
 
+
+
+## Conclusion
